@@ -123,9 +123,15 @@ switch(menuSelection)
 
     case "3":
         // Ensure animal ages and physical descriptions are complete
+        Console.WriteLine("Challenge Project - please check back soon to see progress.");
+        Console.WriteLine("Press the Enter key to continue.");
+        readResult = Console.ReadLine();
         break;
 
     case "4":
+        Console.WriteLine("Challenge Project - please check back soon to see progress.");
+        Console.WriteLine("Press the Enter key to continue.");
+        readResult = Console.ReadLine();
         // Ensure animal nicknames and personality descriptions are complete
         break;
 
