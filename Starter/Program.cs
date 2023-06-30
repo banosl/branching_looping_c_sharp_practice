@@ -85,8 +85,8 @@ do
   Console.WriteLine(" 2. Add a new animal friend to the ourAnimals array");
   Console.WriteLine(" 3. Ensure animal ages and physical descriptions are complete");
   Console.WriteLine(" 4. Ensure animal nicknames and personality descriptions are complete");
-  Console.WriteLine(" 5. Edit an animal’s age");
-  Console.WriteLine(" 6. Edit an animal’s personality description");
+  Console.WriteLine(" 5. Edit an animal's age");
+  Console.WriteLine(" 6. Edit an animal's personality description");
   Console.WriteLine(" 7. Display all cats with a specified characteristic");
   Console.WriteLine(" 8. Display all dogs with a specified characteristic");
   Console.WriteLine();
@@ -143,6 +143,29 @@ switch(menuSelection)
         while (anotherPet == "y" && petCount < maxPets)
         {
             bool validEntry = false;
+
+            // Prompts user if they want to add another pet if there is still room
+            if (petCount < maxPets)
+            {
+                Console.WriteLine("Do you want to enter info for another pet? (y/n)");
+
+                do
+                {
+                    readResult = Console.ReadLine();
+                    if (readResult != null)
+                    {
+                        anotherPet = readResult.ToLower();
+                    }
+
+                }   while (anotherPet != "y" && anotherPet != "n");
+            
+            }
+            
+            //returns to menu if user doesn't want to add another pet
+            if (anotherPet == "n")
+            {
+                break;
+            }
             
             //prompts user to enter dog or cat and verifies that those are the only possible entries.
             do
@@ -195,7 +218,7 @@ switch(menuSelection)
             // Get a description of the pet's physical appearance/condition -animalPhysicalDescription can be blank
             do
             {
-                Console.WriteLine("Enter a physical description of the pet (size, color, gender, weight, housebroken");
+                Console.WriteLine("Enter a physical description of the pet (size, color, sex, weight, housebroken).");
                 readResult = Console.ReadLine();
 
                 if (readResult != null)
@@ -212,7 +235,7 @@ switch(menuSelection)
             // Get a description of pet's personality - animalPersonalityDescription can be blank
             do
             {
-                Console.WriteLine("Enter a description of the pet's personality (likes or dislikes, tricks, energy level)");
+                Console.WriteLine("Enter a description of the pet's personality (likes or dislikes, tricks, energy level).");
                 readResult = Console.ReadLine();
 
                 if (readResult != null)
@@ -243,23 +266,13 @@ switch(menuSelection)
                 }
             } while (animalNickname == "");
 
-            // Prompts user if they want to add another pet if there is still room
-            if (petCount < maxPets)
-            {
-                Console.WriteLine("Do you want to enter info for another pet? (y/n)");
-
-                do
-                {
-                    readResult = Console.ReadLine();
-                    if (readResult != null)
-                    {
-                        anotherPet = readResult.ToLower();
-                    }
-                }   while (anotherPet != "y" && anotherPet != "n");
-            
-            }
-
-            
+            // store the pet information in the ourAnimals array (zero based)
+            ourAnimals[petCount, 0] = "ID #: " + animalID;
+            ourAnimals[petCount, 1] = "Species: " + animalSpecies;
+            ourAnimals[petCount, 2] = "Age: " + animalAge;
+            ourAnimals[petCount, 3] = "Nickname: " + animalNickname;
+            ourAnimals[petCount, 4] = "Physical description: " + animalPhysicalDescription;
+            ourAnimals[petCount, 5] = "Personality: " + animalPersonalityDescription;          
         }
 
         if (petCount >= maxPets)
