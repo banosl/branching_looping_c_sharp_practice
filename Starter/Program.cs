@@ -192,6 +192,23 @@ switch(menuSelection)
                 }               
             } while (validEntry == false);
 
+            // Get a description of the pet's physical appearance/condition -animalPhysicalDescription can be blank
+            do
+            {
+                Console.WriteLine("Enter a physcial description of the pet (size, color, gender, weight, housebroken");
+                readResult = Console.ReadLine();
+
+                if (readResult != null)
+                {
+                    animalPhysicalDescription = readResult.ToLower();
+                }
+
+                if (animalPhysicalDescription == "")
+                {
+                    animalPhysicalDescription = "tbd";
+                }
+            } while (animalPhysicalDescription == "");
+
             // Prompts user if they want to add another pet if there is still room
             if (petCount < maxPets)
             {
