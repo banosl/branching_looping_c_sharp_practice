@@ -142,8 +142,57 @@ switch(menuSelection)
 
         while (anotherPet == "y" && petCount < maxPets)
         {
+            bool validEntry = false;
+            
+            //prompts user to enter dog or cat and verifies that those are the only possible entries.
+            do
+            {
+                Console.WriteLine("\n\rEnter 'dog' or 'cat' to begin a new entry");
+                readResult = Console.ReadLine();
+                
+                if (readResult != null)
+                    {
+                        animalSpecies = readResult.ToLower();
+
+                        if (animalSpecies != "dog" && animalSpecies != "cat")
+                        {
+                            validEntry = false;
+                        }
+                        else
+                        {
+                            validEntry = true;
+                        }
+                    }    
+            }   while (validEntry == false);
+
+            //build the animal the ID number - for example C1, C2, D3 (for Cat 1, Cat 2, Dog 3)
+            animalID = animalSpecies.Substring(0, 1) + (petCount + 1).ToString();
+
             petCount = petCount + 1;
             
+            // Prompt user to enter an age verified as an int or a '?'
+            do
+            {
+                int petAge;
+                Console.WriteLine("Enter the pet's age or a '?' if unknown.");
+                readResult = Console.ReadLine();
+
+                if (readResult != null)
+                {
+                    animalAge = readResult.ToLower();
+                    // int petAge;
+                    if (animalAge != "?")
+                    {
+                        validEntry = int.TryParse(animalAge, out petAge);
+                    }
+                    else
+                    {
+                        validEntry = true;
+                    }
+                }               
+            } while (validEntry == false);
+
+            // Prompts user if they want to add another pet if there is still room
             if (petCount < maxPets)
             {
                 Console.WriteLine("Do you want to enter info for another pet? (y/n)");
@@ -157,7 +206,8 @@ switch(menuSelection)
                     }
                 }   while (anotherPet != "y" && anotherPet != "n");
             
-            }    
+            }
+
             
         }
 
