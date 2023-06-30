@@ -195,7 +195,7 @@ switch(menuSelection)
             // Get a description of the pet's physical appearance/condition -animalPhysicalDescription can be blank
             do
             {
-                Console.WriteLine("Enter a physcial description of the pet (size, color, gender, weight, housebroken");
+                Console.WriteLine("Enter a physical description of the pet (size, color, gender, weight, housebroken");
                 readResult = Console.ReadLine();
 
                 if (readResult != null)
@@ -208,6 +208,23 @@ switch(menuSelection)
                     animalPhysicalDescription = "tbd";
                 }
             } while (animalPhysicalDescription == "");
+
+            // Get a description of pet's personality - animalPersonalityDescription can be blank
+            do
+            {
+                Console.WriteLine("Enter a description of the pet's personality (likes or dislikes, tricks, energy level)");
+                readResult = Console.ReadLine();
+
+                if (readResult != null)
+                {
+                    animalPersonalityDescription = readResult.ToLower();
+                }
+
+                if (animalPersonalityDescription == "")
+                {
+                    animalPersonalityDescription = "tbd";
+                }
+            } while (animalPersonalityDescription == "");
 
             // Prompts user if they want to add another pet if there is still room
             if (petCount < maxPets)
