@@ -226,6 +226,23 @@ switch(menuSelection)
                 }
             } while (animalPersonalityDescription == "");
 
+            // Get the pet's nickname. animalNickname can be blank.
+            do
+            {
+                Console.WriteLine("Enter the pet's nickname");
+                readResult = Console.ReadLine();
+
+                if (readResult != null)
+                {
+                    animalNickname = readResult.ToLower();
+                }
+
+                if (animalNickname == "")
+                {
+                    animalNickname = "tbd";
+                }
+            } while (animalNickname == "");
+
             // Prompts user if they want to add another pet if there is still room
             if (petCount < maxPets)
             {
