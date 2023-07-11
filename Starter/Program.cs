@@ -51,7 +51,7 @@ for (int i = 0; i < maxPets; i++)
       animalSpecies = "cat";
       animalID = "c4";
       animalAge = "?";
-      animalPhysicalDescription = "";
+      animalPhysicalDescription = "tbd";
       animalPersonalityDescription = "";
       animalNickname = "";
       break;
@@ -286,7 +286,52 @@ switch(menuSelection)
 
     case "3":
         // Ensure animal ages and physical descriptions are complete
-        Console.WriteLine("Challenge Project - please check back soon to see progress.");
+       
+        // loop through the the ourAnimals array and have it check ages and physical descriptions for each
+        
+        // if an age is blank or wrong do a ReadLine method
+        // it should check that it's an integer
+        // ages should not be blank or ? but an integer only
+        
+        // if a description is blank or wrong do a ReadLine method
+        // it should check that it's a string and not empty
+        // description should be a string
+        // loops to the next one
+
+        // until there are no more animals without ages and physical descriptions.
+     
+        for (int i = 0; i < maxPets; i++)
+        {
+            while (ourAnimals[i, 2] == "Age: ?")
+            {
+                int petAge;
+                Console.WriteLine("Enter an age for " + ourAnimals[i, 0]);
+                readResult = Console.ReadLine();
+
+                if (readResult != null && int.TryParse(readResult, out petAge))
+                {
+                    ourAnimals[i, 2] = ("Age: " + petAge);
+                    Console.WriteLine("File updated.");
+                }
+            }
+        }
+        for (int i = 0; i < maxPets; i++)
+        {
+            while (ourAnimals[i, 4] == "Physical description: tbd")
+            {
+                string physicalDescription;
+                Console.WriteLine("Enter a physical description for " + ourAnimals[i, 0] + "(size, color, breed, sex, weight, housebroken)");
+                readResult = Console.ReadLine();
+
+                if (readResult != null)
+                {
+                    physicalDescription = readResult.ToLower();
+                    ourAnimals[i, 4] = ("Physical description: " + physicalDescription);
+                    
+                    Console.WriteLine("File updated.");
+                }
+            }
+        }
         Console.WriteLine("Press the Enter key to continue.");
         readResult = Console.ReadLine();
         break;
